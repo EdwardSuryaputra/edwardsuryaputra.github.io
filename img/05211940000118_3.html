@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  margin-left:100px;
+  position: relative;
+  animation-name: example;
+  animation-duration: 7s;
+  animation-iteration-count:infinite;
+}
+
+@keyframes example {
+  0%   {background-color:#706fd3; left:0px; top:0px;}
+  25%  {background-color:#474787; left:100px; top:0px;}
+  50%  {background-color:#40407a; left:100px; top:100px;}
+  75%  {background-color:#2c2c54; left:0px; top:100px;}
+  100% {background-color:#706fd3; left:0px; top:0px;}
+}
+</style>
+</head>
+<body>
+
+<p><b>Note:</b> This example does not work in Internet Explorer 9 and earlier versions.</p>
+
+<div></div>
+
+</body>
+</html>
