@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validating Two Fields_Edward</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        
+        .form_id{
+            border-style: solid;
+            border-width: thin;
+            border-radius: 20px;
+            padding: 30px;
+            border-color: #1e90ff;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 5px 5px 5px #888888;
+        }
+        form{
+            padding: 10%;
+        }
+        span{
+            color: red;
+        }
+    
+    </style>
+    <script>
+        //memulai jquery
+        $(document).ready(function() {
+            $('.error').hide(); //menyembunyikan span kelas error 
+            $('.infobox').each(function(){ //fungsi berlaku pada setiap elemen yang sesuai (.infobox)
+                $(this).blur(function checkLength(){ //berfungsi untuk mengecek apakah field ada isi apa tidak
+                    var data=$(this).val(); //.val berfungsi untuk mengambil nilai dari elemen pertama sehingga variabel data adalah isi input infobox
+                    var len=data.length; //panjang variabel data
+                    if(len<1){ //mengecek jika panjang variabel kurang dari satu
+                    $(this).parent().find('.error').show(); //maka span kelas error akan muncul
+                    $(this).css("box-shadow", "0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red").show(); //box input akan menyala merah
+                    }
+                    else{ //jika panjang variabel satu ke atas
+                    $(this).parent().find('.error').hide(); //span kelas error akan disembunyikan kembali lagi
+                    $(this).css("box-shadow", "none").show(); //efek box-shadow dihilangkan
+                    }
+                });
+            }); 
+            $('.submit').click(function(event){ //fungsi yang berpengaruh jika button submit di click
+                $('.infobox').each(function checkLength(){ //fungsi sama seperti fungsi checkLength() diatas
+                    var data=$(this).val();
+                    var len=data.length;
+                    if(len<1){
+                    $(this).parent().find('.error').show();
+                    $(this).css("box-shadow", "0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red").show();
+                    }
+                    else{
+                    $(this).parent().find('.error').hide();
+                    $(this).css("box-shadow", "none").show();
+                    }
+                });
+            event.preventDefault(); //bentuk default form akan tidak terjadi (kondisi sama, tidak berubah seperti semula)
+            });
+        }); 
+    </script>
+</head>
+<body>
+    <form>
+        <div class="form_id">
+            <div class="form-group">
+                <label for="exampleInputEmail1">E-mail</label>
+                <input type="email" class="form-control infobox" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span class="error"> This field cannot be blank</span>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control infobox" id="exampleInputPassword1">
+                <span class="error"> This field cannot be blank</span>
+            </div>
+            <button type="submit" class="btn btn-primary submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>
